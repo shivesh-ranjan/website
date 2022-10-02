@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 
 from .models import Contact, MailList
-
+from blog.models import Post
+from projects.models import Project
 # Create your views here.
 def home(request):
     if request.method=="POST":
@@ -31,3 +32,20 @@ def contact(request):
             contact.save()
             messages.success(request, "Form submitted!")
     return render(request, 'webapp/contact.html')
+
+def searchSite(request):
+    query = request.GET["query"]
+    if len(query) > 50:
+        resultProject = Project.objects.none()
+        resultBlog = Post.objects.none()
+    else:
+        resultProjectTitle = Project.objects.filter(Title__icontains=query).all()
+        resultProjectBody = Project.objects.filter(Body__icontains=query).all()
+        resultProject=resultProjectTitle.union(resultProjectBody)
+
+        resultBlogTitle = Post.objects.filter(Title__icontains=query).all()
+        resultBlogBody = Post.objects.filter(Body__icontains=query).all()
+        resultBlog = resultBlogTitle.union(resultBlogBody)
+
+    context={'resultProject': resultProject, 'resultBlog': resultBlog, 'query':query}
+    return render(request, 'webapp/search.html', context)
