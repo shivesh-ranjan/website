@@ -1,0 +1,43 @@
+{% extends 'webapp/layout.html' %}
+{% block title %}Search Results{% endblock title %}
+{% block body %}
+<div class="container">
+    <h1>Search Results:</h1>
+    {% if resultProject|length < 1 %}
+    <h4>No Search Results in Projects for {{query}}.</h4>
+    <br>
+    {% endif %}
+    {% for proj in resultProject %}
+    <h4>In Projects:</h4>
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2" style="color: #8F00FF">{{proj.Tag}}</strong>
+            <h3 class="mb-0">{{proj.Title}}</h3>
+            <div class="mb-1 text-muted">{{proj.TimeStamp}}</div>
+            <p class="card-text mb-auto">{{proj.Body|striptags|safe | truncatechars:300}}</p>
+            <a href="projects/project/{{proj.Slug}}" class="stretched-link" style="color: #8F00FF">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% if resultBlog|length < 1 %}
+    <h4>No Search Results in Blogs for {{query}}.</h4>
+    <br>
+    {% endif %}
+    {% for proj in resultBlog %}
+    <h4>In Blogs</h4>
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2" style="color: #8F00FF">{{proj.Category}}</strong>
+            <h3 class="mb-0">{{proj.Title}}</h3>
+            <div class="mb-1 text-muted">{{proj.TimeStamp}}</div>
+            <p class="card-text mb-auto">{{proj.Body|striptags|safe | truncatechars:300}}</p>
+            <a href="blog/blogPost/{{proj.Slug}}" class="stretched-link" style="color: #8F00FF">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock body %}
