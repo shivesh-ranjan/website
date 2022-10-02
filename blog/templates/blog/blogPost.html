@@ -1,0 +1,10 @@
+{% extends 'blog/layout.html' %}
+{% block body %}
+<div class="container">
+    <h1 style="padding-top: 2rem">{{post.Title}}</h1>
+    <h6 class="text-primary"><b>{{post.Category}}</b></h6>
+    <h4>by {{post.Author}}</h4>
+    <h6 style="padding-bottom: 1rem">{{post.TimeStamp}}</h6>
+    {{post.Body|safe}}
+</div>
+{% endblock body %}

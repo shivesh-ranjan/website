@@ -1,0 +1,29 @@
+{% extends 'blog/layout.html' %}
+{% block title %}Search Results{% endblock title %}
+{% block css %}{% endblock css %}
+
+{% block body %}
+<main class="container">
+    <h1 style="padding: 2rem 0">Search Results:</h1>
+    {% if searchPosts|length < 1 %}
+    <p>No Search Results for query <b>{{query}}.</b></p>
+    <br>
+    <p>Try using different keywords!</p>
+    {% endif %}
+    <div class="row mb-2">
+      {% for post in searchPosts %}
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{post.Category}}</strong>
+            <h3 class="mb-0">{{post.Title}}</h3>
+            <div class="mb-1 text-muted">{{TimeStamp}}</div>
+            <p class="card-text mb-auto">{{post.Body|safe | truncatechars:300}}</p>
+            <a href="{{post.Slug}}" class="stretched-link">Continue reading</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock body %}

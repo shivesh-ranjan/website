@@ -1,0 +1,10 @@
+{% extends 'projects/layout.html' %}
+{% block body %}
+<div class="container">
+    <h1 style="padding:2rem 0 0 0">{{proj.Title}}</h1>
+    <h6 class="text-success"><b>{{proj.Tag}}</b></h6>
+    <h6>{{proj.TimeStamp}}</h6>
+    <h4><a  href="{{proj.Source}}"><button class="btn btn-dark" style="margin-right:1rem">Source Code</button></a><a href="{{proj.Deploy}}"><button class="btn btn-secondary">Deployed Version</button></a></h4>
+    {{proj.Body|safe}}
+</div>
+{% endblock body %}
