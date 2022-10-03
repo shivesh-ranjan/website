@@ -6,9 +6,9 @@
     {% if resultProject|length < 1 %}
     <h4>No Search Results in Projects for {{query}}.</h4>
     <br>
+    {% else %}<h4>In Projects:</h4>
     {% endif %}
     {% for proj in resultProject %}
-    <h4>In Projects:</h4>
     <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
@@ -24,9 +24,9 @@
     {% if resultBlog|length < 1 %}
     <h4>No Search Results in Blogs for {{query}}.</h4>
     <br>
+    {% else %}<h4>In Blogs</h4>
     {% endif %}
     {% for proj in resultBlog %}
-    <h4>In Blogs</h4>
     <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
