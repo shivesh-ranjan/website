@@ -1,0 +1,25 @@
+{% extends 'projects/layout.html' %}
+{% block title %}Search Results{% endblock title %}
+{% block body %}
+<div class="container">
+    <h1>Search Results:</h1>
+    {% if searchResults|length < 1 %}
+    <h4>No Search Results for {{query}}.</h4>
+    <br>
+    <h4>Try using other Keywords!</h4>
+    {% endif %}
+    {% for proj in searchResults %}
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">{{proj.Tag}}</strong>
+            <h3 class="mb-0">{{proj.Title}}</h3>
+            <div class="mb-1 text-muted">{{proj.TimeStamp}}</div>
+            <p class="card-text mb-auto">{{proj.Body|striptags|safe | truncatechars:300}}</p>
+            <a href="project/{{proj.Slug}}" class="stretched-link text-success">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock body %}

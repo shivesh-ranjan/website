@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <style>
+      .navbar {
+        background-color: white;
+        padding: 1rem 2rem;
+      }
+      .navbar-brand {
+        color: #8F00FF;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      .navbar-brand:hover {
+        color: #8F00FF;
+        font-weight: bold;
+      }
+      .navbarSearchBtn {
+        background-color: #8F00FF;
+        color: white;
+        border: none;
+      }
+      #navbarSupportedContent .navbar-nav .nav-item .nav-link:hover {
+        color: #8F00FF;
+        font-weight: bold;
+      }
+      footer ul li .nav-link:hover {
+        color: #8F00FF;
+        font-weight: bold;
+      }
+      footer ul li .nav-link{
+        color: black;
+      }
+      {% block css %}{% endblock css %}
+    </style>
+    </head>
+    <body>
+      <nav class="navbar sticky-top navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Shivesh♘</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/blog">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/projects">Projects</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Free Resources
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="https://clammy-sailboat-922.notion.site/Machine-Learning-Roadmap-53919ec97c8f4866b970250bd7576dc5">ML Roadmap</a></li>
+                  <li><a class="dropdown-item" href="https://whimsical.com/ml-roadmap-copy-GmacsJseJNuCYyuSehngpp">ML Mindmap</a></li>
+                  <li><a class="dropdown-item" href="https://www.notion.so/Cheat-Sheets-7397667391a7460788f50d7754fa8de4">ML Cheat Sheets</a></li>
+                  <li><a class="dropdown-item" href="https://zerotomastery.io/cheatsheets/business-analytics-cheat-sheet/">Business Analytics</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="http://www.mashup-template.com/templates.html">Website Templates</a></li>
+                </ul>
+              </li>      
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+            <form method="get" action="/search" class="d-flex" role="search" style="margin:auto 0">
+              <input class="form-control me-2" type="search" placeholder="Search full site" aria-label="Search" name="query" id="query">
+              <button class="btn navbarSearchBtn" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show mb-0" role="alert">
+        <strong>Message:</strong> {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+          <hr style='margin: 0; background-color: #8F00FF;'>
+          {% block body %}{% endblock %}
+
+          <div class="container">
+            <footer class="py-3 my-4">
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a class="nav-link" href="https://github.com/shivesh-ranjan" class="nav-link px-2 text-muted">Git Hub</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/shivesh-ranjan/" class="nav-link px-2 text-muted">Linked In</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://instagram.com/derex_ig" class="nav-link px-2 text-muted">Instagram</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://twitter.com/derex_tw" class="nav-link px-2 text-muted">Twitter</a></li>
+              </ul>
+              <p class="text-center text-muted">© 2022 Shivesh Ranjan</p>
+            </footer>
+          </div>
+
+          <!-- JavaScript Bundle with Popper -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

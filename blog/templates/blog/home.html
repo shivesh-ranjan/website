@@ -1,0 +1,30 @@
+{% extends 'blog/layout.html' %}
+{% block title %}Blog{% endblock title %}
+{% block css %}{% endblock css %}
+
+{% block body %}
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Welcome to <span style="color: blue">Blogs</span>!</h1>
+        <p class="lead my-3">Start below with latest blogs from cryptocurrency and blockchain to Artificial Intelligence and Machine Learning.</p>
+      </div>
+    </div>
+  
+    <div class="row mb-2">
+      {% for post in allPosts %}
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{post.Category}}</strong>
+            <h3 class="mb-0">{{post.Title}}</h3>
+            <div class="mb-1 text-muted">{{post.TimeStamp}}</div>
+            <p class="card-text mb-auto">{{post.Body|striptags|safe | truncatechars:300}}</p>
+            <a href="blogPost/{{post.Slug}}" class="stretched-link">Continue reading</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock body %}

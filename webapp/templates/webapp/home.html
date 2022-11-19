@@ -1,0 +1,41 @@
+{% extends 'webapp/layout.html' %}
+{% block title %}Home{% endblock %} 
+{% block css %}
+.portfolioBtn{
+  background-color: #8F00FF;
+  border-color: #8F00FF;
+  color: white;
+}
+{% endblock css %}
+{% block body %}
+<div class="container" style="margin-bottom: 1rem; max-width: 1200px">
+<div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-start text-md-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to <span style="color: #8F00FF">shiveshranjan.tech</span></h1>
+      <p class="col-lg-10 fs-4">This website is my attempt to build a Mega Project showcasing me and my Programming Skills!</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center justify-content-lg-start">
+        <a href="https://portfolio.shiveshranjan.tech"><button type="button" class="btn btn-light btn-lg px-4 me-md-2 portfolioBtn">Portfolio</button></a>
+        <a href="blog"><button type="button" class="btn btn-dark btn-lg px-4 me-md-2">Explore Blog</button></a>
+        <a href="projects"><button type="button" class="btn btn-outline-secondary btn-lg px-4">My Projects</button></a>
+      </div>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form method="post" action="" class="p-4 p-md-5 border rounded-3 bg-light">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="newsEmail" name="newsEmail" placeholder="name@example.com">
+          <label for="newsEmail">Email address</label>
+        </div>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" required> I agree to recieve important notifications.
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-dark" type="submit">Join Mailing List</button>
+        <hr class="my-4">
+        <small class="text-muted">We don't send any promotional mails.</small>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
